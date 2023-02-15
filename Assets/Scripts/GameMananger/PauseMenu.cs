@@ -38,7 +38,7 @@ public class PauseMenu : MonoBehaviour
         ObjectiveAnimation.Play("ObjectiveBoxExit");
         yield return new WaitForSeconds(2f);
         previousObjective = currentObjective.text;
-        currentObjective.text = "Auto Saved";
+        currentObjective.text = "Auto Saving... (Please do not quit the game)";
         ObjectiveAnimation.Play("ObjectiveBoxEntry");
         
         yield return new WaitForSeconds(5f);
@@ -95,6 +95,7 @@ public class PauseMenu : MonoBehaviour
         SaveSystem.SetFloat("unitMaxHP", playerUnit.maxHP);
         SaveSystem.SetFloat("unitCurrentHP", playerUnit.currentHP);
         SaveSystem.SetString("playerObjective", currentObjective.text);
+        SaveSystem.SetVector3("playerPosition", playerPrefab.transform.position);
     }
 
     public void QuitGame()

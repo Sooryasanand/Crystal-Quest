@@ -87,20 +87,6 @@ public class BattleSystem : MonoBehaviour
             SceneManager.LoadScene(1);
         }
 
-        // Checks if the player has double the enemy        
-        if (enemyUnit.maxHP < 2 * playerUnit.currentHP)
-        {
-            AttackButton.SetActive(false);
-            HealButton.SetActive(false);
-            dialogueText.text = "Do you want to Skip?";
-            SkipYesButton.SetActive(true);
-            SkipNoButton.SetActive(true);
-            yield return new WaitForSeconds(10f);
-        }
-        
-        SkipYesButton.SetActive(false);
-        SkipNoButton.SetActive(false);
-        
         // Position to set when the enemy is spawned.
         if (enemyUnit.name == "Vulture")
         {
@@ -127,6 +113,22 @@ public class BattleSystem : MonoBehaviour
         // Set the units to HUD 
         playerHUD.SetHUD(playerUnit);
         enemyHUD.SetHUD(enemyUnit);
+        
+        Debug.Log(enemyUnit.maxHP < 2 / playerUnit.currentHP);
+
+        // Checks if the player has double the enemy health      
+        if ((playerUnit.currentHP / 2) > enemyUnit.maxHP)
+        {
+            AttackButton.SetActive(false);
+            HealButton.SetActive(false);
+            dialogueText.text = "Do you want to Skip?";
+            SkipYesButton.SetActive(true);
+            SkipNoButton.SetActive(true);
+            yield return new WaitForSeconds(10f);
+        }
+        
+        SkipYesButton.SetActive(false);
+        SkipNoButton.SetActive(false);
 
         yield return new WaitForSeconds(2f);
         
@@ -142,6 +144,8 @@ public class BattleSystem : MonoBehaviour
     // Returns to the main menu
     public void OnSkipYes()
     {
+        Destroy(playerPrefab);
+        Destroy(enemyPrefab);
         SceneManager.LoadScene(1);
     }
     

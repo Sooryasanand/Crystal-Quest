@@ -65,6 +65,7 @@ public class DialogueManager : MonoBehaviour
         SaveSystem.SetFloat("unitMaxHP", playerUnit.maxHP);
         SaveSystem.SetFloat("unitCurrentHP", playerUnit.currentHP);
         SaveSystem.SetString("playerObjective", CurrentObjective.text);
+        SaveSystem.SetVector3("playerPosition", playerPrefab.transform.position);
     }
 
     public void NextMessage()

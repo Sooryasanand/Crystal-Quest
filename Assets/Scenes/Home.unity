@@ -439,7 +439,7 @@ MonoBehaviour:
   pauseMenu: {fileID: 457222854}
   currentObjective: {fileID: 658831067}
   ObjectiveAnimation: {fileID: 1185978390}
-  SaveTimeLeft: 5
+  SaveTimeLeft: 1800
   previousObjective: 
 --- !u!4 &55026415
 Transform:

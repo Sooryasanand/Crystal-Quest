@@ -15,6 +15,7 @@ public class Unit : MonoBehaviour
     public int maxHP;
     public int currentHP;
     public Slider hpSlider;
+    public Vector3 playerPosition;
 
     // Reference game object for camera
     GameObject camera;
@@ -52,6 +53,7 @@ public class Unit : MonoBehaviour
             float UnitCurrentHP = SaveSystem.GetFloat("unitCurrentHP");
             float PlayerScene = SaveSystem.GetFloat("playerScene");
             string PlayerObjective = SaveSystem.GetString("playerObjective");
+            Vector3 PlayerPosition = SaveSystem.GetVector3("playerPosition");
 
             // Sets the data from the file to the above referenced player units
             unitLevel = (int)UnitLevel;
@@ -59,16 +61,25 @@ public class Unit : MonoBehaviour
             maxHP = (int)UnitMaxHP;
             currentHP = (int)UnitCurrentHP;
             scene = (int)PlayerScene;
+            playerPosition = PlayerPosition;
+            Debug.Log("PlayerPosition");
             currentScene = SceneManager.GetActiveScene();
-            GameObject.FindGameObjectWithTag("Objective").GetComponent<ObjectiveUpdate>().updateObjective(PlayerObjective);
+            if (PlayerObjective == "Auto Saving... (Please do not quit the game)")
+            {
+                GameObject.FindGameObjectWithTag("Objective").GetComponent<ObjectiveUpdate>().updateObjective("Talk to Wizard");
+            }
+            else
+            {
+                GameObject.FindGameObjectWithTag("Objective").GetComponent<ObjectiveUpdate>().updateObjective(PlayerObjective);
+            }
+            
             
             if (gameObject.tag == "Player")
             {
                 if (currentScene.buildIndex == 1)
                 {
-                    gameObject.transform.position = new Vector2(-658.7261f, 80.7179f);
+                    gameObject.transform.position = playerPosition;
                 }
-                
             }
     }
 
@@ -111,6 +122,7 @@ public class Unit : MonoBehaviour
             if (gameObject.tag == "Player")
             {
                 GameObject.FindGameObjectWithTag("Objective").GetComponent<ObjectiveUpdate>().updateObjective("Talk to Wizard");
+                gameObject.transform.position = new Vector2(-658.7261f, 80.7179f);
             }
         }
        
