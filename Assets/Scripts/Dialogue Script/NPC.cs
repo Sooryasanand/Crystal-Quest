@@ -2,16 +2,18 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class NPC : MonoBehaviour
 {
     public DialogueTrigger trigger;
     public GameObject triggerText;
+    public Text userQuestion;
     bool triggerStay;
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Return) && triggerStay)
+        if (Input.GetKeyDown(KeyCode.C) && triggerStay)
         {
             triggerText.SetActive(false);
             trigger.StartDialogue();
@@ -22,10 +24,10 @@ public class NPC : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            userQuestion.text = "Press 'C' to chat";
             triggerStay = true;
             triggerText.SetActive(true);
         }
-        
     }
     
     private void OnCollisionExit2D(Collision2D collision)

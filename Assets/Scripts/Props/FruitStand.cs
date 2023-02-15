@@ -23,10 +23,10 @@ public class FruitStand : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            userQuestion.text = "Do you want to eat an apple to revive? Press the E key";
             triggerStay = true;
             playerUnit = GameObject.FindGameObjectWithTag("Player").GetComponent<Unit>();
             userQuestionGameObject.SetActive(true);
-            userQuestion.text = "Do you want to eat an apple to revive? Press the E key";
         }
     }
     

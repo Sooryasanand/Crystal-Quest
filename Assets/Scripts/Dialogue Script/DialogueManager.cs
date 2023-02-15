@@ -123,7 +123,7 @@ public class DialogueManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.anyKeyDown && isActive)
+        if (Input.GetKeyDown(KeyCode.Return) && isActive)
         {
             NextMessage();
         }

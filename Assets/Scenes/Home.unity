@@ -438,6 +438,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 457222854}
   currentObjective: {fileID: 658831067}
+  ObjectiveAnimation: {fileID: 1185978390}
+  SaveTimeLeft: 5
+  previousObjective: 
 --- !u!4 &55026415
 Transform:
   m_ObjectHideFlags: 0
@@ -3369,6 +3372,11 @@ PrefabInstance:
       propertyPath: triggerText
       value: 
       objectReference: {fileID: 450927052}
+    - target: {fileID: 7134034695924309466, guid: 7f94049207c084f5997ea46017dede8a,
+        type: 3}
+      propertyPath: userQuestion
+      value: 
+      objectReference: {fileID: 1157710639}
     - target: {fileID: 7134034695924309466, guid: 7f94049207c084f5997ea46017dede8a,
         type: 3}
       propertyPath: DialogueTrigger
@@ -23345,6 +23353,11 @@ PrefabInstance:
       objectReference: {fileID: 450927052}
     - target: {fileID: 2486129839551108300, guid: 75a577f8728834397b791a240e7adaa2,
         type: 3}
+      propertyPath: userQuestion
+      value: 
+      objectReference: {fileID: 1157710639}
+    - target: {fileID: 2486129839551108300, guid: 75a577f8728834397b791a240e7adaa2,
+        type: 3}
       propertyPath: DialogueTrigger
       value: 
       objectReference: {fileID: 0}
@@ -23452,6 +23465,11 @@ PrefabInstance:
       propertyPath: triggerText
       value: 
       objectReference: {fileID: 450927052}
+    - target: {fileID: 2559672379889865564, guid: d775af614228b43aeb58606cf4a02519,
+        type: 3}
+      propertyPath: userQuestion
+      value: 
+      objectReference: {fileID: 1157710639}
     - target: {fileID: 2559672379889865564, guid: d775af614228b43aeb58606cf4a02519,
         type: 3}
       propertyPath: DialogueTrigger
@@ -23787,6 +23805,11 @@ PrefabInstance:
       propertyPath: triggerText
       value: 
       objectReference: {fileID: 450927052}
+    - target: {fileID: 9013914312143108465, guid: a85436e14280d4c8486a79ab60c2f834,
+        type: 3}
+      propertyPath: userQuestion
+      value: 
+      objectReference: {fileID: 1157710639}
     - target: {fileID: 9013914312143108465, guid: a85436e14280d4c8486a79ab60c2f834,
         type: 3}
       propertyPath: DialogueTrigger

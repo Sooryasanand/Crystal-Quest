@@ -16,6 +16,11 @@ public class PauseMenu : MonoBehaviour
     
     public static bool isPaused;
     public Text currentObjective;
+    public Animator ObjectiveAnimation;
+    
+    public float SaveTimeLeft = 1800f;
+
+    public string previousObjective;
 
 
     // Start is called before the first frame update
@@ -28,9 +33,33 @@ public class PauseMenu : MonoBehaviour
         pauseMenu.SetActive(false);
     }
 
+    IEnumerator SaveInfo()
+    {
+        ObjectiveAnimation.Play("ObjectiveBoxExit");
+        yield return new WaitForSeconds(2f);
+        previousObjective = currentObjective.text;
+        currentObjective.text = "Auto Saved";
+        ObjectiveAnimation.Play("ObjectiveBoxEntry");
+        
+        yield return new WaitForSeconds(5f);
+        
+        ObjectiveAnimation.Play("ObjectiveBoxExit");
+        yield return new WaitForSeconds(2f);
+        currentObjective.text = previousObjective;
+        ObjectiveAnimation.Play("ObjectiveBoxEntry");
+    }
+
     // Update is called once per frame
     void Update()
     {
+        SaveTimeLeft -= Time.deltaTime;
+        if (SaveTimeLeft <= 0f)
+        {
+            SaveData();
+            SaveSystem.SaveToDisk();
+            SaveTimeLeft = 1800f;
+            StartCoroutine(SaveInfo());
+        }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (isPaused)

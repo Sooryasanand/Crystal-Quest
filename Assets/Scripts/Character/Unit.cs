@@ -8,38 +8,43 @@ using UnityEngine.SceneManagement;
 
 public class Unit : MonoBehaviour
 {
+    // Reference for player units
     public string unitName;
     public int unitLevel;
-
     public int damage;
-
     public int maxHP;
     public int currentHP;
-    
     public Slider hpSlider;
 
+    // Reference game object for camera
     GameObject camera;
     public int scene;
     
+    // Reference for audio source and clip
     public AudioSource audioSource;
     public AudioClip HealAudio;
 
+    // Reference for the currentscene
     public Scene currentScene;
-
+    
     public bool TakeDamage(int dmg)
+    // Purpose: Takes player damage
     {
+        // Reduces the damage from the current hp depending on the value entered when calling the function
         currentHP -= dmg;
-
+        
         if (currentHP <= 0)
             return true; return false;
     }
     
     static string GetPath()
+    // Purpose: Get the path of the player data file
     {
         return Application.persistentDataPath + "/" + "Gamedata.bin";
     }
     
     public void LoadData()
+    // Purpose: Load all the player data and objectives from the data file
     {
             float UnitLevel = SaveSystem.GetFloat("unitLevel");
             float UnitDamage = SaveSystem.GetFloat("unitDamage");
@@ -48,6 +53,7 @@ public class Unit : MonoBehaviour
             float PlayerScene = SaveSystem.GetFloat("playerScene");
             string PlayerObjective = SaveSystem.GetString("playerObjective");
 
+            // Sets the data from the file to the above referenced player units
             unitLevel = (int)UnitLevel;
             damage = (int)UnitDamage;
             maxHP = (int)UnitMaxHP;
@@ -114,5 +120,7 @@ public class Unit : MonoBehaviour
     {
         hpSlider.maxValue = maxHP;
         hpSlider.value = currentHP;
+        
+        
     }
 }
